@@ -1,2 +1,2 @@
 <?php
-	echo "test2.loc";
+	echo "_test2.loc";
