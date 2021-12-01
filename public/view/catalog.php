@@ -1,19 +1,19 @@
 <?php
-  require_once "inc/autoloader.inc.php";
-  require_once "inc/products.inc.php";
+  require_once "../inc/autoloader.inc.php";
+  require_once "../src/models/products.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <meta charset="UTF-8">
   <title>Каталог товаров</title>
 </head>
 <body>
 <div class="container">
   <?php
-      require_once "template-parts/header.php";
+      require_once "view/header.php";
     ?>
   <div class="row nav-top-line">
     <div class="col-2">
@@ -21,7 +21,7 @@
     </div>
     <div class="col-10 align-self-center">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php">Главная</a></li>
+        <li class="breadcrumb-item"><a href="public/index.php">Главная</a></li>
         <li class="breadcrumb-item"><a href="#">Телефоны, планшеты и аксессуары</a></li>
         <li class="breadcrumb-item active">Телефоны</li>
       </ol>
@@ -64,7 +64,7 @@
     </div>
   </div>
     <?php
-    require_once "template-parts/footer.php";
+    require_once "view/footer.php";
     ?>
 </div>
 <!-- JavaScript Bundle with Popper -->

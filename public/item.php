@@ -9,7 +9,7 @@
 <body>
 <div class="container">
   <?php
-      require_once "template-parts/header.php";
+      require_once "view/header.php";
   ?>
   <div class="row nav-top-line">
     <div class="col-2">
@@ -17,7 +17,7 @@
     </div>
     <div class="col-10 align-self-center">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php">Главная</a></li>
+        <li class="breadcrumb-item"><a href="public/index.php">Главная</a></li>
         <li class="breadcrumb-item"><a href="#">Телефоны, планшеты и аксессуары</a></li>
         <li class="breadcrumb-item"><a href="#">Телефоны</a></li>
         <li class="breadcrumb-item"><a href="#">Apple</a></li>
@@ -82,7 +82,7 @@
     </div>
   </div>
     <?php
-    require_once "template-parts/footer.php";
+    require_once "view/footer.php";
     ?>
 </div>
 <!-- JavaScript Bundle with Popper -->
