@@ -13,7 +13,12 @@
     <div class="col-2 align-self-end">
         <div class="container header-user">
             <div class="row">
-                <a class="col" href="/account/login">Войти</a>
+                <?php
+                    if (!Session::get("succes"))
+                      echo '<a class="col" href="/account/login">Войти</a>';
+                    else
+                      echo '<a class="col" href="/account/profile">Профиль</a>';
+                ?>
                 <a class="col" href="/basket/show">Корзина</a>
             </div>
         </div>

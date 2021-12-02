@@ -10,6 +10,11 @@
             "action" => "login"
         ],
 
+        "account/profile" => [
+            "controller" => "account",
+            "action" => "profile"
+        ],
+
         "basket/show" => [
             "controller" => "basket",
             "action" => "show"
