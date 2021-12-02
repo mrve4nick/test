@@ -1,5 +1,5 @@
 <nav>
-    <span class="h5"><a href="?page=catalog">Каталог товаров</a></span>
+    <span class="h5"><a href="/catalog/show">Каталог товаров</a></span>
     <ul>
         <li><a href="#">Телефоны, планшеты и аксессуары</a></li>
         <li><a href="#">Аккумуляторы, элементы питания</a></li>
