@@ -1,5 +1,4 @@
 <?php
-
     class View {
         public function draw(string $template, array $params, string $layout) {
             ob_start();

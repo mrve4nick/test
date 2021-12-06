@@ -1,0 +1,5 @@
+{"name":"Iphone 13","code":1,"category":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b","vendor":"Apple","price":10000,"specifications":{"color":"Black","ROM":128}, "quantity":100}
+{"name":"Iphone 11","code":2,"category":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b","vendor":"Apple","price":10000,"specifications":{"color":"Black","ROM":128}, "quantity":100}
+{"name":"Iphone 12","code":3,"category":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b","vendor":"Apple","price":10000,"specifications":{"color":"Black","ROM":128}, "quantity":100}
+{"name":"Iphone X","code":4,"category":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b","vendor":"Apple","price":10000,"specifications":{"color":"Black","ROM":128}, "quantity":100}
+{"name":"Iphone XS","code":1,"category":"\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b","vendor":"Apple","price":10000,"specifications":{"color":"Black","ROM":128}, "quantity":0}
