@@ -8,17 +8,6 @@
 
     set_error_handler("MyErrorHandler");
     register_shutdown_function("myFatalErrorHandler");
-    function ttt() {
-        include_once "fsadf";
-    }
-
-    function ddd() {
-        ttt();
-    }
-
-    ddd();
-
-    //fsdaf;
 
     Session::start();
     $router = new Router();
