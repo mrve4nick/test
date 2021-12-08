@@ -11,21 +11,12 @@ function logMyErrors($str)
 function backtraceExplode()
 {
     $str = "";
-    $trace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 10);
+    ob_start();
+    debug_print_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 10);
+    $trace = ob_get_contents();
+    ob_end_clean();
 
-    foreach ($trace as $val) {
-        foreach ($val as $traceKey => $traceVal) {
-            if (!is_array($traceVal)) {
-                $str .= "[$traceKey] - $traceVal\n";
-            } else {
-                foreach ($traceVal as $argKey => $argVal) {
-                    $str .= "[$argKey] - $argVal\n";
-                }
-            }
-        }
-    }
-
-    return $str;
+    return $trace;
 }
 
 

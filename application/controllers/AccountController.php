@@ -7,7 +7,8 @@ class AccountController
     protected $params = [];
     protected $query = [];
 
-    public function __construct($params, $query) {
+    public function __construct($params, $query)
+    {
         $this->params = $params;
         $this->query = $query;
     }
@@ -42,7 +43,7 @@ class AccountController
                     "",
                     $template,
                     [
-                        ["aside" => "nav", "content" => "login"]
+                        ["aside" => "nav", "content" => "profile"]
                     ]
                 );
                 $tmp = View::assign($t, $template, $tmp);
@@ -52,11 +53,13 @@ class AccountController
         echo $tmp;
     }
 
-    public function signin() {
+    public function signin()
+    {
         Login::signin($_POST["email"], $_POST["pass"]);
     }
 
-    public function logout() {
+    public function logout()
+    {
         Login::logout();
     }
 }

@@ -2,7 +2,7 @@
 
 class Login
 {
-    public function signin($email, $pass)
+    public static function signin($email, $pass)
     {
         if (empty($email) || empty($pass)) {
             Session::set("fail", "Неверный логин или пароль");
@@ -18,7 +18,7 @@ class Login
         }
     }
 
-    public function logout()
+    public static function logout()
     {
         if (Session::get("succes")) {
             Session::destroy();

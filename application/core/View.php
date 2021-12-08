@@ -19,6 +19,7 @@ class View
             require_once __DIR__ . "/../views/layouts/" . $layout . ".php";
             $output = ob_get_contents();
             ob_end_clean();
+            return $output;
         }
 
         if (!empty($template)) {
@@ -26,9 +27,8 @@ class View
             include __DIR__ . "/../views/" . $template . ".php";
             $output = ob_get_contents();
             ob_end_clean();
+            return $output;
         }
-
-        return $output;
     }
 
     public static function parse($layout)
