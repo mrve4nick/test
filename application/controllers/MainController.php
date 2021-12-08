@@ -1,11 +1,24 @@
 <?php
-    require_once __DIR__ . "/../core/Controller.class.php";
 
-    class MainController extends Controller {
-        public function mainAction() {
-            View::draw(__DIR__ . "/../../public/view/template_main.php", ["{BREADCRUMBS}" => "",
-                "{ASIDE}" => __DIR__ . "/../../public/view/nav_aside.php",
-                "{MAIN_CONTENT}" => __DIR__ . "/../../public/view/slider_main.php",
-                "{OTHER}" => __DIR__ . "/../../public/view/best_price_offer.php"], __DIR__ . "/../../public/view/layout.php");
+class MainController
+{
+    public function mainAction()
+    {
+        $tmp = View::create("layout", "", []);
+
+        while (View::parse($tmp)) {
+            foreach (View::parse($tmp) as $template) {
+                $t = View::create(
+                    "",
+                    $template,
+                    [
+                        ["aside" => "nav", "content" => "slider", "other" => "bestprice"]
+                    ]
+                );
+                $tmp = View::assign($t, $template, $tmp);
+            }
         }
+
+        echo $tmp;
     }
+}

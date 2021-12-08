@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-2">
-        {ASIDE}
+        {aside}
     </div>
     <div class="col-10">
-        {MAIN_CONTENT}
+        {content}
     </div>
 </div>
-{OTHER}
+{other}

@@ -1,15 +1,53 @@
 <?php
-    require_once __DIR__ . "/../core/Controller.class.php";
-    require_once __DIR__ . "/../models/ItemModel.php";
 
-    class CatalogController extends Controller {
-        public $items = [];
+require_once __DIR__ . "/../models/Item.php";
+require_once __DIR__ . "/../models/Storage.php";
 
-        public function showAction() {
-            View::draw(__DIR__ . "/../../public/view/template_main.php", ["{BREADCRUMBS}" => __DIR__ . "/../../public/view/breadcrumbs.php",
-                "{ASIDE}" => __DIR__ . "/../../public/view/product_filter.php",
-                "{MAIN_CONTENT}" => __DIR__ . "/../../public/view/catalog.php",
-                "{PRODUCTS}" => __DIR__ . "/../../public/view/product_filter.php",
-                "{OTHER}" => ""], __DIR__ . "/../../public/view/layout.php");
+class CatalogController
+{
+    public function showAction()
+    {
+        $items = [];
+        $tmp = View::create("layout", "", []);
+
+        while (View::parse($tmp)) {
+            foreach (View::parse($tmp) as $templateName) {
+                if ($templateName == "products") {
+                    foreach (Storage::get() as $item) {
+                        $items[] = new Item(
+                            $item["code"],
+                            $item["img"],
+                            $item["category"],
+                            $item["vendor"],
+                            $item["name"],
+                            $item["price"],
+                            $item["specifications"],
+                            $item["quantity"]
+                        );
+                    }
+
+                    foreach ($items as $item) {
+                        $template .= View::create(
+                            "",
+                            "card",
+                            [
+                                [],
+                                ["vendor" => $item->vendor, "name" => $item->name, "price" => $item->price]
+                            ]
+                        );
+                    }
+                } else {
+                    $template = View::create(
+                        "",
+                        $templateName,
+                        [
+                            ["aside" => "filter", "content" => "catalog"]
+                        ]
+                    );
+                }
+                $tmp = View::assign($template, $templateName, $tmp);
+            }
         }
+        echo $tmp;
     }
+}
