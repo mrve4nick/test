@@ -1,4 +1,5 @@
 <?php
+namespace Framework;
 
 class Router
 {
@@ -39,13 +40,11 @@ class Router
     public function run()
     {
         if ($this->match()) {
-            $path =  __DIR__ . "/../application/controllers/" . ucfirst($this->params["controller"]) . "Controller.php";
-            $name = ucfirst($this->params["controller"]) . "Controller";
-            if (file_exists($path)) {
-                require_once $path;
+            $controller =  "App\controllers\\" . ucfirst($this->params["controller"]) . "Controller";
+            if (class_exists($controller)) {
                 $action = $this->params["action"] . "Action";
-                if (method_exists($name, $action)) {
-                    return ["controller" => $name,
+                if (method_exists($controller, $action)) {
+                    return ["controller" => $controller,
                             "action" => $action,
                             "query" => $this->query,
                             "params" => $this->params,

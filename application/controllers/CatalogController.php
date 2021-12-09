@@ -1,6 +1,8 @@
 <?php
-require_once __DIR__ . "/../models/CatalogModel.php";
-require_once __DIR__ . "/../models/Item.php";
+namespace App\controllers;
+
+use App\models\CatalogModel;
+use Framework\core\View;
 
 class CatalogController
 {

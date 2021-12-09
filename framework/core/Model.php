@@ -1,4 +1,5 @@
 <?php
+namespace Framework\core;
 
 abstract class Model
 {

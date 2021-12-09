@@ -1,5 +1,9 @@
 <?php
-require_once __DIR__ . "/../../framework/core/Model.php";
+namespace App\models;
+
+use Framework\core\Model;
+use Framework\core\View;
+use App\models\Item;
 
 class CatalogModel extends Model
 {

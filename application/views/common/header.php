@@ -14,7 +14,7 @@
         <div class="container header-user">
             <div class="row">
                 <?php
-                if (!Session::get("succes")) {
+                if (!\Framework\Session::get("succes")) {
                     echo '<a class="col" href="/account/login">Войти</a>';
                 } else {
                     echo '<a class="col" href="/account/profile">Профиль</a>';

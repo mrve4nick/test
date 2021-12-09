@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . "/../models/MainModel.php";
+namespace App\controllers;
+
+use App\models\MainModel;
+use Framework\core\View;
 
 class MainController
 {

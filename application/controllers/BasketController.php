@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . "/../models/BasketModel.php";
+namespace App\controllers;
+
+use App\models\BasketModel;
+use Framework\core\View;
 
 class BasketController
 {

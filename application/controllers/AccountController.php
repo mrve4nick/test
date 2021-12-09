@@ -1,8 +1,11 @@
 <?php
-require_once __DIR__ . "/../models/AccountModel.php";
-require_once __DIR__ . "/../models/ProfileModel.php";
+namespace App\controllers;
 
-require_once __DIR__ . "/../../framework/core/Login.php";
+use App\models\AccountModel;
+use App\models\ProfileModel;
+use Framework\core\View;
+use Framework\core\Login;
+
 
 class AccountController
 {
