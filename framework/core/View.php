@@ -16,7 +16,7 @@ class View
 
         if (!empty($layout)) {
             ob_start();
-            require_once __DIR__ . "/../views/layouts/" . $layout . ".php";
+            require_once __DIR__ . "/../../application/views/layouts/" . $layout . ".php";
             $output = ob_get_contents();
             ob_end_clean();
             return $output;
@@ -24,7 +24,7 @@ class View
 
         if (!empty($template)) {
             ob_start();
-            include __DIR__ . "/../views/" . $template . ".php";
+            include __DIR__ . "/../../application/views/" . $template . ".php";
             $output = ob_get_contents();
             ob_end_clean();
             return $output;

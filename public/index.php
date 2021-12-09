@@ -1,14 +1,35 @@
 <?php
-    require_once __DIR__ . "/../application/core/ExceptionHandler.php";
-    require_once __DIR__ . "/../application/core/ErrorHandlers.php";
-    require_once __DIR__ . "/../application/core/Session.php";
-    require_once __DIR__ . "/../application/core/Router.php";
-    require_once __DIR__ . "/../application/core/View.php";
 
-   set_error_handler("MyErrorHandler");
-   register_shutdown_function("myFatalErrorHandler");
+    require_once __DIR__ . "/../framework/core/ExceptionHandler.php";
+    require_once __DIR__ . "/../framework/core/ErrorHandlers.php";
+    require_once __DIR__ . "/../framework/Session.php";
+    require_once __DIR__ . "/../framework/Router.php";
+    require_once __DIR__ . "/../framework/core/View.php";
 
+    //set_error_handler("MyErrorHandler");
+    //register_shutdown_function("myFatalErrorHandler");
 
     Session::start();
+
     $router = new Router();
-    $router->run();
+    try {
+        $routerInfo = $router->run();
+    } catch (Exception $e) {
+//        echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
+    } finally {
+        header("HTTP/1.0 404 Not Found");
+    }
+
+
+    $controller = new $routerInfo["controller"](
+        $routerInfo["params"],
+        $routerInfo["query"]
+    );
+
+    if (!empty($routerInfo["query"])) {
+        foreach ($routerInfo["query"] as $action => $param) {
+            $controller->$param();
+        }
+    }
+    $action = $routerInfo["action"];
+    $controller->$action();

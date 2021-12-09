@@ -39,27 +39,25 @@ class Router
     public function run()
     {
         if ($this->match()) {
-            $path =  __DIR__ . "/../controllers/" . ucfirst($this->params["controller"]) . "Controller.php";
+            $path =  __DIR__ . "/../application/controllers/" . ucfirst($this->params["controller"]) . "Controller.php";
             $name = ucfirst($this->params["controller"]) . "Controller";
             if (file_exists($path)) {
                 require_once $path;
                 $action = $this->params["action"] . "Action";
                 if (method_exists($name, $action)) {
-                    $controller = new $name($this->params, $this->query);
-                    if (!empty($this->query)) {
-                        foreach ($this->query as $action => $param) {
-                            $controller->$param();
-                        }
-                    }
-                    $controller->$action();
+                    return ["controller" => $name,
+                            "action" => $action,
+                            "query" => $this->query,
+                            "params" => $this->params,
+                            "query" => $this->query];
                 } else {
-                    echo "Action doesn't exist <br/>";
+                    throw new Exception("Action doesn't exist <br/>");
                 }
             } else {
-                echo "Controller doesn't exist<br/>";
+                throw new Exception("Controller doesn't exist<br/>");
             }
         } else {
-            header("HTTP/1.0 404 Not Found");
+            throw new Exception("404");
         }
     }
 }

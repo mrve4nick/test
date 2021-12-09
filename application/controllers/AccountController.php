@@ -1,6 +1,8 @@
 <?php
+require_once __DIR__ . "/../models/AccountModel.php";
+require_once __DIR__ . "/../models/ProfileModel.php";
 
-require_once __DIR__ . "/../core/Login.php";
+require_once __DIR__ . "/../../framework/core/Login.php";
 
 class AccountController
 {
@@ -16,41 +18,13 @@ class AccountController
     public function loginAction()
     {
         $tmp = View::create("layout", "", []);
-
-        while (View::parse($tmp)) {
-            foreach (View::parse($tmp) as $template) {
-                $t = View::create(
-                    "",
-                    $template,
-                    [
-                        ["aside" => "nav", "content" => "login"]
-                    ]
-                );
-                $tmp = View::assign($t, $template, $tmp);
-            }
-        }
-
-        echo $tmp;
+        echo AccountModel::reverse($tmp);
     }
 
     public function profileAction()
     {
         $tmp = View::create("layout", "", []);
-
-        while (View::parse($tmp)) {
-            foreach (View::parse($tmp) as $template) {
-                $t = View::create(
-                    "",
-                    $template,
-                    [
-                        ["aside" => "nav", "content" => "profile"]
-                    ]
-                );
-                $tmp = View::assign($t, $template, $tmp);
-            }
-        }
-
-        echo $tmp;
+        echo ProfileModel::reverse($tmp);
     }
 
     public function signin()

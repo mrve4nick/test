@@ -1,6 +1,7 @@
 <?php
 
-class Item {
+class Item
+{
     public $code;
     public $img;
     public $category;
@@ -10,7 +11,8 @@ class Item {
     public $specifications;
     public $quantity;
 
-    public function __construct($code, $img, $category, $vendor, $name, $price, $specifications, $quantity) {
+    public function __construct($code, $img, $category, $vendor, $name, $price, $specifications, $quantity)
+    {
         $this->code = $code;
         $this->img = $img;
         $this->category = $category;
@@ -19,5 +21,17 @@ class Item {
         $this->price = $price;
         $this->specifications = $specifications;
         $this->quantity = $quantity;
+    }
+
+    public static function get()
+    {
+        $items = file_get_contents(__DIR__ . "/../../src/storage.json");
+        $items = json_decode($items);
+
+        //convert obj to arr
+        foreach ($items as $item) {
+            $item->specifications = (array) $item->specifications;
+        }
+        return $items;
     }
 }
