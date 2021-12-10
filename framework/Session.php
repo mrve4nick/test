@@ -1,4 +1,5 @@
 <?php
+
 namespace Framework;
 
 class Session
@@ -6,6 +7,7 @@ class Session
     public static function start()
     {
         if (empty($_SESSION)) {
+            ini_set('session.cookie_httponly', 1);
             session_start();
         }
     }
@@ -26,6 +28,8 @@ class Session
 
     public static function destroy()
     {
+        setcookie(session_id(), "", time() - 3600);
         session_destroy();
+        session_write_close();
     }
 }

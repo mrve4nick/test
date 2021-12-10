@@ -26,8 +26,13 @@ class AccountController
 
     public function profileAction()
     {
-        $tmp = View::create("layout", "", []);
-        echo ProfileModel::reverse($tmp);
+        if (!\Framework\Session::get("succes")) {
+            header("Location: /account/login");
+        } else {
+            $tmp = View::create("layout", "", []);
+            echo ProfileModel::reverse($tmp);
+        }
+
     }
 
     public function signin()
