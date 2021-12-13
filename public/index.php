@@ -1,21 +1,21 @@
 <?php
 
     require_once __DIR__ . "/../vendor/autoload.php";
-    require_once __DIR__ . "/../framework/core/ExceptionHandler.php";
-    require_once __DIR__ . "/../framework/core/ErrorHandlers.php";
 
-    \Framework\Session::start();
-
+    use Framework\core\ExceptionHandler;
     use Framework\Router;
 
+    \Framework\core\ErrorHandler::myErrorHandler();
+    \Framework\Session::start();
+
+    $exceptionHanlder = new ExceptionHandler();
+    $exceptionHanlder->exceptionLog();
 
 
     $router = new Router();
     try {
         $routerInfo = $router->run();
     } catch (Exception $e) {
-        echo 'Выброшено исключение: ',  $e->getMessage(), "\n";
-    } finally {
         header("HTTP/1.0 404 Not Found");
     }
 

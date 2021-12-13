@@ -1,9 +1,15 @@
 <?php
 
-class ExceptionHandler extends Exception
+namespace Framework\core;
+
+use Framework\core\ErrorHandler;
+
+class ExceptionHandler extends \Exception
 {
-    public function errorLog()
+    public function exceptionLog()
     {
-        logMyErrors(time() . " EXCEPTION on line " . $this->getLine() . " in " . $this->getFile() . ": " . $this->getMessage() . "\n");
+        set_exception_handler(function () {
+            ErrorHandler::logMyErrors(time() . " EXCEPTION on line " . $this->getLine() . " in " . $this->getFile() . ": " . $this->getMessage() . "\n");
+        });
     }
 }

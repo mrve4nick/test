@@ -50,13 +50,13 @@ class Router
                             "params" => $this->params,
                             "query" => $this->query];
                 } else {
-                    throw new Exception("Action doesn't exist <br/>");
+                    throw new \Exception("Action doesn't exist <br/>");
                 }
             } else {
-                throw new Exception("Controller doesn't exist<br/>");
+                throw new \Exception("Controller doesn't exist<br/>");
             }
         } else {
-            throw new Exception("404");
+            throw new \Exception("404");
         }
     }
 }
