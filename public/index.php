@@ -2,10 +2,10 @@
 
     require_once __DIR__ . "/../vendor/autoload.php";
 
-    use Framework\core\ExceptionHandler;
+    use ve4nick\logger\ExceptionHandler;
     use Framework\Router;
 
-    \Framework\core\ErrorHandler::myErrorHandler();
+    \ve4nick\logger\ErrorHandler::myErrorHandler();
     \Framework\Session::start();
 
     $exceptionHanlder = new ExceptionHandler();
