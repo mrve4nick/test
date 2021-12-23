@@ -11,8 +11,6 @@
     $exceptionHandler = new ExceptionHandler();
     $exceptionHandler->exceptionLog();
 
-    use Framework\core\Database;
-
     $router = new Router();
     try {
         $routerInfo = $router->run();
