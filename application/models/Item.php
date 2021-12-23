@@ -1,5 +1,8 @@
 <?php
+
 namespace App\models;
+
+use Framework\core\Database;
 
 class Item
 {
@@ -10,9 +13,9 @@ class Item
     public $name;
     public $price;
     public $specifications;
-    public $quantity;
+    public $balance;
 
-    public function __construct($code, $img, $category, $vendor, $name, $price, $specifications, $quantity)
+    public function __construct($code, $img, $category, $vendor, $name, $price, $specifications, $balance)
     {
         $this->code = $code;
         $this->img = $img;
@@ -21,18 +24,21 @@ class Item
         $this->name = $name;
         $this->price = $price;
         $this->specifications = $specifications;
-        $this->quantity = $quantity;
+        $this->balance = $balance;
     }
 
-    public static function get()
+    public static function getAll()
     {
-        $items = file_get_contents(__DIR__ . "/../../src/storage.json");
-        $items = json_decode($items);
+        $db = Database::connect();
 
-        //convert obj to arr
-        foreach ($items as $item) {
-            $item->specifications = (array) $item->specifications;
+        $products = mysqli_query($db, "SELECT * FROM products");
+
+        $items = [];
+
+        while ($item = mysqli_fetch_assoc($products)) {
+            $items[] = $item;
         }
+
         return $items;
     }
 }

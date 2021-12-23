@@ -13,16 +13,16 @@ class CatalogModel extends Model
         while (View::parse($tmp)) {
             foreach (View::parse($tmp) as $templateName) {
                 if ($templateName == "products") {
-                    foreach (Item::get() as $item) {
+                    foreach (Item::getAll() as $item) {
                         $items[] = new Item(
-                            $item->code,
-                            $item->img,
-                            $item->category,
-                            $item->vendor,
-                            $item->name,
-                            $item->price,
-                            $item->specifications,
-                            $item->quantity
+                            $item["code"],
+                            $item["img"],
+                            $item["category"],
+                            $item["vendor"],
+                            $item["name"],
+                            $item["price"],
+                            $item["specifications"],
+                            $item["balance"]
                         );
                     }
 

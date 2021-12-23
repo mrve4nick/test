@@ -8,9 +8,10 @@
     \ve4nick\logger\ErrorHandler::myErrorHandler();
     \Framework\Session::start();
 
-    $exceptionHanlder = new ExceptionHandler();
-    $exceptionHanlder->exceptionLog();
+    $exceptionHandler = new ExceptionHandler();
+    $exceptionHandler->exceptionLog();
 
+    use Framework\core\Database;
 
     $router = new Router();
     try {
